@@ -1,0 +1,10 @@
+.buttons{
+    margin-right: 100px;
+}
+.wrapper{
+    padding:20px;
+}
+.create{
+    outline: 1px solid black;
+    width:300px;
+}

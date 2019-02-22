@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'exam_app/css/style.css' %}">
+</head>
+
+<body>
+    <div class="header">
+        <center>
+            <h1>Welcome!</h1><br>
+        </center>
+    </div>
+    <div class="wraper">
+        <center>
+            <div style="position: absolute; margin-left:650px;">
+                {% if messages %}
+                {% for message in messages %}
+                <p style="color:red;">{{ message }}</p>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </center>
+        <div class="registration">
+            <h2>Register here!</h2>
+            <form action='/register' method='post'>
+                {% csrf_token %}
+                First Name:<br><input type='text' name='first_name'><br>
+                Last Name:<br><input type='text' name='last_name'><br>
+                Email:<br><input type='text' name='email'><br>
+                Password:<br><input type='password' name='password'><br>
+                Confirm Password:<br><input type='password' name='confirm_pw'><br><br>
+                <button class="btn btn-primary">Register!</button>
+            </form>
+        </div>
+        <div class="login">
+            <h2>Login here!</h2>
+            <form action='/login' method='post'>
+                {% csrf_token %}
+                Email:<br><input type='text' name='email'><br>
+                Password:<br><input type='password' name='password'><br><br>
+                <button class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

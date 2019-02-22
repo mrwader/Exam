@@ -1,0 +1,27 @@
+<head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'exam_app/css/dashboard_style.css' %}">
+    </head>
+<div class = "wrapper">
+<h2>Hello {{user.first_name}} Read about this trip!</h2>
+<a href = "/dashboard" style ="float:right;">Dashboard</a>
+<p><b>{{trip.destination}}</b></p>
+<div class ="create">
+<p>Start Date: {{trip.start_date}}</p>
+<p>End Date: {{trip.end_date}}</p>
+<p>Created On: {{trip.created_at}}</p>
+<p>Last Updated: {{trip.updated_at}}</p>
+<p>Plan: {{trip.plan}}</p>
+<p>Created by: {{trip.user.first_name}}</p>
+<p>People who joined:</p>
+{% for u in trip.users.all %}
+{%if u.email != trip.user.email %}
+<p>{{u.first_name}}</p>
+{%endif%}
+{% endfor%}
+</div>
+</div>
+
+

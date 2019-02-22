@@ -1,0 +1,53 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'exam_app/css/dashboard_style.css' %}">
+</head>
+<div class="wrapper">
+    <h2>Hello {{user.first_name}}!</h2>
+    <div class="buttons">
+        <a href="/logout" style="float:right;"> Logout</a>
+        <a href="/trips/new" style="float:right;">Add new Trip&nbsp; </a>
+    </div><br>
+    <p>Your trips:</p>
+    <table>
+        <tr>
+            <th>Destination</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Plan</th>
+            <th>Actions</th>
+        </tr>
+        {% for t in trips%}
+        <tr>
+            <td><a href="/trips/{{t.id}}">{{t.destination}}</a></td>
+            <td>{{t.start_date}}</td>
+            <td>{{t.end_date}}</td>
+            <td>{{t.plan}}</td>
+            <td><a href="/trips/edit/{{t.id}}">Edit</a> <a href="/trips/{{t.id}}/delete">Remove</a> <a href="/cancel_trip/{{t.id}}">Cancel</a> </td>
+        </tr>
+        {% endfor %}
+
+    </table><br><br>
+    <p>Other people trips:</p>
+    <table>
+        <tr>
+            <th>Destination</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Plan</th>
+            <th>Want to join?</th>
+        </tr>
+        {% for ot in other_trips%}
+        <tr>
+            <td><a href="/trips/{{ot.id}}">{{ot.destination}}</a></td>
+            <td>{{ot.start_date}}</td>
+            <td>{{ot.end_date}}</td>
+            <td>{{ot.plan}}</td>
+            <td> <a href="/join_trip/{{ot.id}}">Join</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>

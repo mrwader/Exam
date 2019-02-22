@@ -1,0 +1,41 @@
+.wraper div {
+    float: left;
+    clear: none;
+}
+
+.registration {
+    margin: 10px;
+    margin-left: 40px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.login {
+    margin: 10px;
+    display: inline-block;
+    position: absolute;
+    left: 1200px;
+    vertical-align: top;
+}
+
+body {
+}
+
+.header {
+    display: inline-block;
+    width: 1700px;
+    background-color: grey;
+    padding: 10px;
+    box-shadow: 4px 4px 8px #888888;
+    height: 75px;
+}
+
+button {
+    box-shadow: 4px 4px 8px #888888;
+}
+
+input {
+    margin-bottom: 5px;
+    box-shadow: 4px 4px 8px #888888;
+    padding: 2px;
+}

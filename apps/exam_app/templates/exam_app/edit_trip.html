@@ -1,0 +1,30 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'exam_app/css/dashboard_style.css' %}">
+</head>
+<div class = "wrapper">
+<h2>Hello {{user.first_name}}! Let's edit your trip!</h2> <a href="/logout" style = "float:right;">Logout</a><a href="/dashboard" style = "float:right;">Dashboard &nbsp;</a><br>
+
+<div style="position: absolute; margin-left:650px;">
+    {% if messages %}
+    {% for message in messages %}
+    <p style="color:red;">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+
+<form action="/update_trip" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="trip_id" value="{{trip.id}}">
+    Destination<br><input type="text" name="destination" value="{{trip.destination}}"><br>
+    Start Date<br><input type="date" name="start_date" value="{{trip.start_date|date:'Y-m-d'}}"><br>
+    End Date<br><input type="date" name="end_date" value="{{trip.end_date|date:'Y-m-d'}}"><br>
+    Plan<br><textarea name="plan" rows="4" cols="20" style="resize: none;">{{trip.plan}}</textarea><br>
+    <button>Update</button>
+</form>
+<form action="/dashboard">
+    <button>Cancel</button>
+</form>
+</div>
